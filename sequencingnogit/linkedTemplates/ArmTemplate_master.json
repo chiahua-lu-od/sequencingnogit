@@ -1,0 +1,98 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "sequencingnogit"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"CopyDestination_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CopyDestination'"
+		},
+		"CopySource_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'CopySource'"
+		},
+		"PartnerDocSandbox_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'PartnerDocSandbox'"
+		},
+		"AzureFuncAppToKeyVault_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://seqkv.vault.azure.net/"
+		},
+		"MetadataRetriverLinkService_properties_typeProperties_functionAppUrl": {
+			"type": "string",
+			"defaultValue": "https://vincyfunctionapp.azurewebsites.net"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.Storage/storageAccounts/vincysequencing"
+		},
+		"trigger2_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.EventGrid/topics/EventGridCustomTopic"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "sequencingnogit_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"CopyDestination_connectionString": {
+						"value": "[parameters('CopyDestination_connectionString')]"
+					},
+					"CopySource_connectionString": {
+						"value": "[parameters('CopySource_connectionString')]"
+					},
+					"PartnerDocSandbox_connectionString": {
+						"value": "[parameters('PartnerDocSandbox_connectionString')]"
+					},
+					"trigger1_properties_typeProperties_scope": {
+						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
+					},
+					"AzureFuncAppToKeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureFuncAppToKeyVault_properties_typeProperties_baseUrl')]"
+					},
+					"MetadataRetriverLinkService_properties_typeProperties_functionAppUrl": {
+						"value": "[parameters('MetadataRetriverLinkService_properties_typeProperties_functionAppUrl')]"
+					},
+					"trigger2_properties_typeProperties_scope": {
+						"value": "[parameters('trigger2_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

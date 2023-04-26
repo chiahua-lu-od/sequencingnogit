@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "sequencingnogit"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"CopyDestination_connectionString": {
+			"value": ""
+		},
+		"CopySource_connectionString": {
+			"value": ""
+		},
+		"PartnerDocSandbox_connectionString": {
+			"value": ""
+		},
+		"AzureFuncAppToKeyVault_properties_typeProperties_baseUrl": {
+			"value": "https://seqkv.vault.azure.net/"
+		},
+		"MetadataRetriverLinkService_properties_typeProperties_functionAppUrl": {
+			"value": "https://vincyfunctionapp.azurewebsites.net"
+		},
+		"trigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.Storage/storageAccounts/vincysequencing"
+		},
+		"trigger2_properties_typeProperties_scope": {
+			"value": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.EventGrid/topics/EventGridCustomTopic"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
