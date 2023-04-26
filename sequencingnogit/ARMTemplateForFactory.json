@@ -273,13 +273,7 @@
 									}
 								}
 							},
-							"logStorageSettings": {
-								"linkedServiceName": {
-									"referenceName": "AzureBlobStorage1",
-									"type": "LinkedServiceReference"
-								}
-							},
-							"enableLogging": true,
+							"enableLogging": false,
 							"storeSettings": {
 								"type": "AzureBlobStorageReadSettings",
 								"recursive": false,
@@ -316,7 +310,7 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/TriggeringFile')]",
 				"[concat(variables('factoryId'), '/credentials/credential1')]",
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/PartnerDocSandbox')]"
 			]
 		},
 		{
