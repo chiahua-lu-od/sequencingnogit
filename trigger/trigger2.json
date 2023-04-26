@@ -1,0 +1,34 @@
+{
+	"name": "trigger2",
+	"properties": {
+		"description": "from custom topic",
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline1",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "CustomEventsTrigger",
+		"typeProperties": {
+			"subjectEndsWith": "",
+			"subjectBeginsWith": "",
+			"scope": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.EventGrid/topics/EventGridCustomTopic",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			],
+			"advancedFilters": [
+				{
+					"key": "data.api",
+					"operatorType": "StringContains",
+					"values": [
+						"SftpCommit"
+					]
+				}
+			]
+		}
+	}
+}

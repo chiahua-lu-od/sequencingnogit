@@ -1,0 +1,15 @@
+{
+	"name": "sequencingnogit",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned,UserAssigned",
+		"principalId": "5cd9b579-aae2-4291-a9d7-a6f1f348c142",
+		"tenantId": "b0e0d312-bd1b-4314-a355-9ff726ed1063",
+		"userAssignedIdentities": {
+			"/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourcegroups/od-varis-dio-vincy/providers/Microsoft.ManagedIdentity/userAssignedIdentities/seqtest1stid": {
+				"clientId": "0865097e-3427-4dce-bda7-c1ae0b387c71",
+				"principalId": "076db900-5e57-4bc7-902f-dd1aef2f3408"
+			}
+		}
+	}
+}

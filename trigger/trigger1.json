@@ -1,0 +1,18 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"description": "trigger from sftp file upload creation",
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/event-trigger-container/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/cc663e10-d7c3-4b07-a80d-024b7c8b94b6/resourceGroups/od-varis-dio-vincy/providers/Microsoft.Storage/storageAccounts/vincysequencing",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}

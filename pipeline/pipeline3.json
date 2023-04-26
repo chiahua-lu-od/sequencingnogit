@@ -1,0 +1,101 @@
+{
+	"name": "pipeline3",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Delete1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://vincyfunctionapp.azurewebsites.net/api/MetadataRetriverHttpTrigger?container=metadata-input",
+					"method": "GET",
+					"authentication": {
+						"resource": "https://seqkv.vault.azure.net",
+						"credential": {
+							"referenceName": "credential1",
+							"type": "CredentialReference"
+						},
+						"type": "UserAssignedManagedIdentity"
+					}
+				}
+			},
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "TriggeringFile",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_containername": {
+								"value": "bbbbbbbbbbbbbbbb",
+								"type": "Expression"
+							},
+							"ds_filename": {
+								"value": "aaaaaaaaaaaaaa",
+								"type": "Expression"
+							}
+						}
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "AzureBlobStorage1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": false,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"parameters": {
+			"subject": {
+				"type": "string",
+				"defaultValue": "_EventGridEvent__subject"
+			},
+			"event_type": {
+				"type": "string",
+				"defaultValue": "_EventGridEvent__event_type"
+			},
+			"event_time": {
+				"type": "string",
+				"defaultValue": "_EventGridEvent__event_time"
+			},
+			"data": {
+				"type": "object",
+				"defaultValue": "_EventGridEvent__data"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-04-26T18:55:45Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

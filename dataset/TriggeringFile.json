@@ -1,0 +1,39 @@
+{
+	"name": "TriggeringFile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PartnerDocSandbox",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"ds_containername": {
+				"type": "string",
+				"defaultValue": "def_ds_contname"
+			},
+			"ds_filename": {
+				"type": "string",
+				"defaultValue": "def_ds_filename"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "datasetfilename",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "catalog",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "datasetcontainer",
+					"type": "Expression"
+				}
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,23 @@
+{
+	"name": "CSVFileDestination",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "CopyDestination",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "part-00000-fc23ba6e-a495-442c-a26b-264e38aeba02-c000.csv",
+				"container": "df-output"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
