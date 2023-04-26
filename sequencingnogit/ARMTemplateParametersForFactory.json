@@ -5,9 +5,6 @@
 		"factoryName": {
 			"value": "sequencingnogit"
 		},
-		"AzureBlobStorage1_connectionString": {
-			"value": ""
-		},
 		"CopyDestination_connectionString": {
 			"value": ""
 		},
